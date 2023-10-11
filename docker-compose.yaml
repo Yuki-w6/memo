@@ -3,17 +3,20 @@ version: '3.8'
 services:
   app:
     build: 
-      context: . 
-      dockerfile: Dockerfiles/app/Dockerfile
+      context: ./memo
+      target: 'develop-stage'
     ports: 
-      - "8080:80"
+      - "8080:8080"
     volumes:
-      - ./memo:/mnt
+      - ./memo:/usr/src/app
+      - cargo-cache:/usr/local/cargo/registry
+      - target-cache:/app/target
     depends_on:
       - db
+    command: /bin/sh -c "cargo watch -x run"
   
   db:
-    build: ./Dockerfiles/db
+    image: postgres:14
     ports:
       - "5432:5432"
     environment:
@@ -23,3 +26,5 @@ services:
 
 volumes:
   db-data:
+  cargo-cache:
+  target-cache:

@@ -7,6 +7,3 @@ edition = "2021"
 
 [dependencies]
 actix-web="4"
-actix-rt = "2"
-sqlx = { version = "0.5", features = ["postgres", "runtime-actix-rust-tls"] }
-dotenv = "0.15"
