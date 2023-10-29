@@ -15,6 +15,9 @@ services:
     depends_on:
       - db
     command: /bin/sh -c "cargo watch -x run"
+    # networks:
+      # - default
+      # - custom
   
   front:
     build:
@@ -26,6 +29,8 @@ services:
       - '5173:5173'
     volumes:
       - ./front:/usr/src/front
+    # networks:
+    #   - custom
   
   db:
     image: postgres:14
@@ -35,8 +40,13 @@ services:
       POSTGRES_PASSWORD: ${PG_DB_PASS}
     volumes:
       - db-data:/var/lib/postgresql/data
+    # networks:
+    #   - custom
 
 volumes:
   db-data:
   cargo-cache:
   target-cache:
+# networks:
+#   custom:
+#     external: true
