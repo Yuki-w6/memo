@@ -1,6 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// import axios from "axios";
+import Home from "@/Pages/Home/Home.vue";
+// import { onMounted, ref } from "vue";
 
-<template></template>
+// const responseData = ref("");
+
+// onMounted(
+//     axios.get()
+// );
+</script>
+
+<template>
+    <div>
+        <h1>Response from Rust server:</h1>
+        <!-- <p>{{ responseData }}</p> -->
+    </div>
+</template>
 
 <style scoped>
 .logo {
