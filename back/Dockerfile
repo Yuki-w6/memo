@@ -1,4 +1,4 @@
-FROM rust:1.73 as develop-stage
+FROM rust as develop-stage
 
 # WORKDIR /app
 WORKDIR /usr/src/back
