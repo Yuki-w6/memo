@@ -1,9 +1,5 @@
-FROM rust as develop-stage
+FROM golang:1.22.5
 
-# WORKDIR /app
-WORKDIR /usr/src/back
-RUN cargo install cargo-watch
-
-# ビルド環境
-FROM develop-stage as build-stage
-RUN cargo build --release
+WORKDIR /src/back
+COPY go.mod go.sum ./
+RUN go mod download

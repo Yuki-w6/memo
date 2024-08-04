@@ -7,12 +7,9 @@ services:
     ports: 
       - "8088:8088"
     volumes:
-      - ./back:/usr/src/back
-      - cargo-cache:/usr/local/cargo/registry
-      - target-cache:/back/target
+      - ./back:/src/back
     depends_on:
       - db
-    command: /bin/sh -c "cargo watch -x run"
     # networks:
       # - default
       # - custom
@@ -26,7 +23,7 @@ services:
     ports:
       - '5173:5173'
     volumes:
-      - ./front:/usr/src/front
+      - ./front:/src/front
     # networks:
     #   - custom
   
