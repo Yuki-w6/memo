@@ -3,11 +3,19 @@ package main
 import (
     "fmt"
     "net/http"
+    "os"
 )
 
+func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
+}
+
 func main() {
-    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
-        fmt.Fprint(w, "Hello World!")
-    })
-    http.ListenAndServe(":8080", nil)
+    http.HandleFunc("/", handler)
+
+    err := http.ListenAndServe(":18080", nil)
+    if err != nil {
+        fmt.Printf("failed to terminate server: %v", err)
+        os.Exit(1)
+    }
 }
